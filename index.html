@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <title>Contador</title>
+</head>
+<body>
+    <div class="col-md-12 bg-danger text-center text-white py-1">
+  <script>
+    var end = new Date('11/03/2019 0:00 AM');
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+
+                clearInterval(timer);
+                document.getElementById('countdown').innerHTML = 'REGISTRO FINALIZADO!';
+
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            document.getElementById('countdown').innerHTML = days + ' dias, ';
+            document.getElementById('countdown').innerHTML += hours + ' horas, ';
+            document.getElementById('countdown').innerHTML += minutes + ' minutos y ';
+            document.getElementById('countdown').innerHTML += seconds + ' segundos';
+            document.getElementById('dateend').innerHTML = end;
+        }
+
+        timer = setInterval(showRemaining, 1000);
+    </script>
+          <h4 id="cambiartamanoletras"><span class="font-weight-bold">ATENCIÓN:</span> Debido a la demanda extremadamente alta, cerraremos el registro a partir de <span id="dateend" class="font-weight-bold"></span> </h4><h4 id="cambiartamanoletras">!Dése prisa¡ <span id="countdown" class="text-warning font-weight-bold" style="text-shadow: 4px 4px 4px black;"></span></h4>
+    </div>
+</body>
+</html>
